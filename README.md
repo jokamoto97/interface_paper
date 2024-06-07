@@ -1,2 +1,4 @@
-# isusie_paper
-This repository contains the data and code to reproduce all analyses from the manuscript that introduces ISuSiE.
+This directory contains all scripts necessary to reproduce the analysis from the paper "Priors for effective and efficient variable selection in
+causal gene fine-mapping" by Okamoto et al. The code and scripts are organized in the subdirectories corresponding to different sections in the paper.
+
+Please contact xwen@umich.edu or jokamoto@umich.edu if you have any questions.
