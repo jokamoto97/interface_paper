@@ -112,3 +112,17 @@ plot(euler(s2),quantities = list(type = "counts",cex = 2),fills = list(fill = c(
      labels = list(col = "black",cex = 1.25))
 dev.off()
 
+
+
+#ISuSiE-only pairs
+
+#metab_dat <- fread("data/annotationAll_FINAL_w_HMDB_ID.csv") %>% 
+#	mutate(CID = paste0("C",CHEM_ID)) %>%
+#	dplyr::select(CID,BIOCHEMICAL_NAME,TYPE,SUPER_PATHWAY,SUB_PATHWAY)
+
+#data.frame("pair" = setdiff(fm_pairs, union(intact_pairs,kba_pairs))) %>%
+#	separate(pair, into = c("CID", "Gene"),sep = '_') %>%
+#	merge(metab_dat,by="CID",all.x=T) %>%
+#	dplyr::select(Gene,CID,BIOCHEMICAL_NAME,TYPE,SUPER_PATHWAY,SUB_PATHWAY) %>%
+#	#filter(!(startsWith(CID,"C9"))) %>%
+#	write.table(file="isusie_kba_difference_set.txt",sep='\t',row.names=F,col.names=T,quote=F)

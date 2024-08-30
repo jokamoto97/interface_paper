@@ -92,6 +92,33 @@ out_marginal$method <- c("PTWAS","PrediXcan","SMR","GLCP","GRCP","INTACT","ISuSi
 
 print(out_marginal)
 
+#Barplot
+
+pdf("sim_rst/marginal_methods_barplot.pdf")
+out_marginal %>%
+	dplyr::select(-n_rej) %>%
+	filter(method != "GLCP") %>%
+	pivot_longer(cols = Power:FDR,
+                     names_to = "type",
+                     values_to = "stat") %>%
+	mutate(method = factor(method,levels = c("PrediXcan","SMR","PTWAS","GRCP","INTACT","ISuSiE"))) %>%
+	mutate(type = factor(type,levels = c("Power","FDR"))) %>%
+	ggplot(aes(x = method,y = stat,fill=type)) + 
+	geom_col(position="dodge") +
+	geom_hline(aes(yintercept = 0.05,linetype = "FDR = 0.05"),col = 'red',alpha= 0.5) +
+	scale_fill_manual(values=c("#56B4E9","red")) +
+	ylab('') +
+        xlab("Method") +
+	scale_linetype_manual(name = "", values = c(2),
+                              guide = guide_legend(override.aes = list(color = c("red")))) +
+	theme_bw() + 
+	theme(text = element_text(size = 10,face="bold"),
+                axis.text.x = element_text(angle = 45, hjust=1),
+		legend.position="bottom",
+		legend.title=element_blank(),aspect.ratio = 1) 
+dev.off()
+
+
 #Joint methods
 
 out_joint <- rbind.data.frame(power_fdr("susie_pip_multi_gene_twas_dap_25","posterior","susie_effect_multi_gene_twas_dap_25"),                       
@@ -106,6 +133,31 @@ out_joint <- rbind.data.frame(power_fdr("susie_pip_multi_gene_twas_dap_25","post
 out_joint$method <- c("Multi-gene TWAS","SuSiE Default","FOCUS","cTWAS","ISuSiE","Oracle Priors")
 
 print(out_joint)
+
+#Barplot
+
+pdf("sim_rst/joint_methods_barplot.pdf")
+out_joint %>%
+        dplyr::select(-n_rej,RMSE) %>%
+        pivot_longer(cols = Power:FDR,
+                     names_to = "type",
+                     values_to = "stat") %>%
+        mutate(method = factor(method,levels = c("Multi-gene TWAS","SuSiE Default","FOCUS","cTWAS","ISuSiE","Oracle Priors"))) %>%
+        mutate(type = factor(type,levels = c("Power","FDR"))) %>%
+        ggplot(aes(x = method,y = stat,fill=type)) + 
+        geom_col(position="dodge") +            
+        geom_hline(aes(yintercept = 0.05,linetype = "FDR = 0.05"),col = 'red',alpha= 0.5) +
+        scale_fill_manual(values=c("#56B4E9","red")) +
+        ylab('') +
+        xlab("Method") +
+        scale_linetype_manual(name = "", values = c(2),
+                              guide = guide_legend(override.aes = list(color = c("red")))) +
+        theme_bw() +
+        theme(text = element_text(size = 10,face="bold"),
+                axis.text.x = element_text(angle = 45, hjust=1),
+                legend.position="bottom",
+                legend.title=element_blank(),aspect.ratio = 1)  
+dev.off()
 
 
 #Vary ISuSiE TWAS prediction models
@@ -156,17 +208,24 @@ out_thresh <- rbind.data.frame(power_fdr("susie_pip_pgene_grcp_pi1_ptwas","poste
 out_thresh$thresh <- c(0,0.25,0.5,0.75,0.95)
 
 pdf("sim_rst/power_fdr_cpip_threshold.pdf")
+
+coeff <- 2.5
 out_thresh %>%
-        pivot_longer(cols = Power:FDR,
-                     names_to = "type",
-                     values_to = "stat") %>%
-        ggplot(aes(x = thresh,y=stat,col=type)) +
-        geom_point() +
+#        pivot_longer(cols = Power:RMSE,
+#                     names_to = "type",
+#                     values_to = "stat") %>%
+        ggplot(aes(x = thresh)) +
+        geom_line(aes(y = Power,color = "Power")) +
+	geom_line(aes(y = FDR,color = "FDR")) +
+        geom_line(aes(y = RMSE/coeff,color = "RMSE")) +	
+#	facet_wrap(~type,scales="free") +
         xlab("CPIP Threshold") +
         ylab("Statistic") +
-        geom_line() +
+#        geom_line() +
+	scale_y_continuous(name = "Power & FDR", sec.axis = sec_axis(~.*coeff, name="RMSE")) + 
+	scale_color_manual(name = "", values = c("Power" = "blue", "FDR" = "red","RMSE" = "dark green")) +
         theme_bw() +
-        theme(text = element_text(size = 10,face="bold"),legend.title=element_blank(),aspect.ratio=1)
+        theme(text = element_text(size = 10,face="bold"),aspect.ratio=1, legend.position="bottom")
 dev.off()
 
 
