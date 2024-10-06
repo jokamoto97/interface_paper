@@ -1,4 +1,4 @@
-#Compare PCGs implicated by KBA, INTACT, and ISuSiE
+#Compare PCGs implicated by KBA, INTACT, and INTERFACE
 
 library(data.table)
 library(dplyr)
@@ -41,7 +41,7 @@ intact_pairs <- unique(paste0(str_split_fixed(intact_rst$Gene,pattern = "_",n = 
 
 #Cgene fine-mapping rst
 
-cgene_fm <- fread("data/isusie_rst_sig.txt")
+cgene_fm <- fread("data/interface_rst_sig.txt")
 
 fm_pairs <- paste0(cgene_fm$CID,"_",
                        str_split_fixed(cgene_fm$Gene,pattern = "_",n = 2)[,1])
@@ -101,12 +101,12 @@ sum(c(intact_only,fm_only,kba_only,intact_and_fm,intact_and_kba,fm_and_kba,intac
 
 pdf('results/compare_intact_fm_kba.pdf')
 s2 <- c("INTACT" = intact_only,
-        "ISuSiE" = fm_only,
+        "INTERFACE" = fm_only,
         "Knowledge-Based" = kba_only,
-        "INTACT&ISuSiE" = intact_and_fm,
+        "INTACT&INTERFACE" = intact_and_fm,
         "INTACT&Knowledge-Based" = intact_and_kba,
-        "ISuSiE&Knowledge-Based" = fm_and_kba,
-        "INTACT&ISuSiE&Knowledge-Based" = intact_fm_kba)
+        "INTERFACE&Knowledge-Based" = fm_and_kba,
+        "INTACT&INTERFACE&Knowledge-Based" = intact_fm_kba)
 
 plot(euler(s2),quantities = list(type = "counts",cex = 2),fills = list(fill = c( "red","steelblue4","grey"), alpha = 0.5),
      labels = list(col = "black",cex = 1.25))
@@ -114,7 +114,7 @@ dev.off()
 
 
 
-#ISuSiE-only pairs
+#INTERFACE-only pairs
 
 #metab_dat <- fread("data/annotationAll_FINAL_w_HMDB_ID.csv") %>% 
 #	mutate(CID = paste0("C",CHEM_ID)) %>%
@@ -125,4 +125,4 @@ dev.off()
 #	merge(metab_dat,by="CID",all.x=T) %>%
 #	dplyr::select(Gene,CID,BIOCHEMICAL_NAME,TYPE,SUPER_PATHWAY,SUB_PATHWAY) %>%
 #	#filter(!(startsWith(CID,"C9"))) %>%
-#	write.table(file="isusie_kba_difference_set.txt",sep='\t',row.names=F,col.names=T,quote=F)
+#	write.table(file="interface_kba_difference_set.txt",sep='\t',row.names=F,col.names=T,quote=F)

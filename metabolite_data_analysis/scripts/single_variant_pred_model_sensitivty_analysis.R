@@ -24,7 +24,7 @@ get_i2 <- function(betas,sds){
 
 rst <- fread("data/smr_diff_set.txt",h=TRUE,data.table=F)
 
-if(!dir.exists("results/intact_isusie_diff_set_effect_size_forest_plots_smr/")){dir.create("results/intact_isusie_diff_set_effect_size_forest_plots_smr/")}
+if(!dir.exists("results/intact_interface_diff_set_effect_size_forest_plots_smr/")){dir.create("results/intact_interface_diff_set_effect_size_forest_plots_smr/")}
 
 make_forest_plot <- function(cid){
 
@@ -40,7 +40,7 @@ make_forest_plot <- function(cid){
 
         I2 <- round(get_i2(rst_tmp$Beta,rst_tmp$SE),digits = 3)
 
-        pdf(paste0("results/intact_isusie_diff_set_effect_size_forest_plots_smr/",cid,"_",gene,"_forest_plot.pdf"))
+        pdf(paste0("results/intact_interface_diff_set_effect_size_forest_plots_smr/",cid,"_",gene,"_forest_plot.pdf"))
         print(
               ggplot(rst_tmp,aes(x = Top_pQTL_CS_ID,y=Beta,ymin=lower,ymax=upper)) +
                       geom_pointrange() +

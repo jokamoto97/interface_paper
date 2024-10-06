@@ -88,7 +88,7 @@ out_marginal <- rbind.data.frame(power_fdr("ptwas_z","z"),
                         power_fdr("intact_ptwas_50","posterior"),
 			power_fdr("susie_pip_pgene_grcp_dap_25_dap","posterior"))
 
-out_marginal$method <- c("PTWAS","PrediXcan","SMR","GLCP","GRCP","INTACT","ISuSiE")
+out_marginal$method <- c("PTWAS","PrediXcan","SMR","GLCP","GRCP","INTACT","INTERFACE")
 
 print(out_marginal)
 
@@ -101,7 +101,7 @@ out_marginal %>%
 	pivot_longer(cols = Power:FDR,
                      names_to = "type",
                      values_to = "stat") %>%
-	mutate(method = factor(method,levels = c("PrediXcan","SMR","PTWAS","GRCP","INTACT","ISuSiE"))) %>%
+	mutate(method = factor(method,levels = c("PrediXcan","SMR","PTWAS","GRCP","INTACT","INTERFACE"))) %>%
 	mutate(type = factor(type,levels = c("Power","FDR"))) %>%
 	ggplot(aes(x = method,y = stat,fill=type)) + 
 	geom_col(position="dodge") +
@@ -130,7 +130,7 @@ out_joint <- rbind.data.frame(power_fdr("susie_pip_multi_gene_twas_dap_25","post
 
 
 
-out_joint$method <- c("Multi-gene TWAS","SuSiE Default","FOCUS","cTWAS","ISuSiE","Oracle Priors")
+out_joint$method <- c("Multi-gene TWAS","SuSiE Default","FOCUS","cTWAS","INTERFACE","Oracle Priors")
 
 print(out_joint)
 
@@ -142,7 +142,7 @@ out_joint %>%
         pivot_longer(cols = Power:FDR,
                      names_to = "type",
                      values_to = "stat") %>%
-        mutate(method = factor(method,levels = c("Multi-gene TWAS","SuSiE Default","FOCUS","cTWAS","ISuSiE","Oracle Priors"))) %>%
+        mutate(method = factor(method,levels = c("Multi-gene TWAS","SuSiE Default","FOCUS","cTWAS","INTERFACE","Oracle Priors"))) %>%
         mutate(type = factor(type,levels = c("Power","FDR"))) %>%
         ggplot(aes(x = method,y = stat,fill=type)) + 
         geom_col(position="dodge") +            
@@ -160,7 +160,7 @@ out_joint %>%
 dev.off()
 
 
-#Vary ISuSiE TWAS prediction models
+#Vary INTERFACE TWAS prediction models
 
 out_pred_model <- rbind.data.frame(power_fdr("susie_pip_pgene_grcp_dap_25_dap","posterior","susie_effect_pgene_grcp_dap_25_dap"),
 				   power_fdr("susie_pip_pgene_grcp_dap_25_elastic_net","posterior","susie_effect_pgene_grcp_dap_25_elastic_net"),
