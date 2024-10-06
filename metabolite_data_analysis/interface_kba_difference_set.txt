@@ -1,0 +1,33 @@
+Gene	CID	BIOCHEMICAL_NAME	TYPE	SUPER_PATHWAY	SUB_PATHWAY
+NFKBIE	C100001413	N4-acetylcytidine	NAMED	Nucleotide	Pyrimidine Metabolism, Cytidine containing
+NCAN	C100001552	1-dihomo-linolenoyl-GPC (20:3n3 or 6)*	NAMED	Lipid	Lysophospholipid
+NCAN	C100001553	1-dihomo-linoleoyl-GPC (20:2)*	NAMED	Lipid	Lysophospholipid
+NCAN	C100001563	2-myristoyl-GPC (14:0)*	NAMED	Lipid	Lysophospholipid
+GSTA1	C100002761	androsterone glucuronide	NAMED	Lipid	Androgenic Steroids
+NCAN	C100002990	oleoyl-linoleoyl-glycerol (18:1/18:2) [2]	NAMED	Lipid	Diacylglycerol
+NAAA	C100003119	N-oleoyltaurine	NAMED	Lipid	Endocannabinoid
+DPEP1	C100003674	prolylglycine	NAMED	Peptide	Dipeptide
+NCAN	C100005351	1-eicosapentaenoyl-GPC (20:5)*	NAMED	Lipid	Lysophospholipid
+NAPRT	C100006098	3-hydroxypyridine sulfate	NAMED	Xenobiotics	Chemical
+HSD17B14	C100006115	arabonate/xylonate	NAMED	Carbohydrate	Pentose Metabolism
+PON1	C100008921	1-palmitoyl-2-stearoyl-GPC (16:0/18:0)	NAMED	Lipid	Phosphatidylcholine (PC)
+NCAN	C100008989	1-palmitoyl-2-eicosapentaenoyl-GPC (16:0/20:5)*	NAMED	Lipid	Phosphatidylcholine (PC)
+PCSK9	C100009020	1-palmityl-2-oleoyl-GPC (O-16:0/18:1)*	NAMED	Lipid	Plasmalogen
+VMO1	C100009026	behenoyl dihydrosphingomyelin (d18:0/22:0)*	NAMED	Lipid	Dihydrosphingomyelins
+NCAN	C100009122	1-pentadecanoyl-2-arachidonoyl-GPC (15:0/20:4)*	NAMED	Lipid	Phosphatidylcholine (PC)
+NCAN	C100009140	1-myristoyl-2-docosahexaenoyl-GPC (14:0/22:6)*	NAMED	Lipid	Phosphatidylcholine (PC)
+NCAN	C100009405	1-myristoyl-2-eicosapentaenoyl-GPC (14:0/20:5)*	NAMED	Lipid	Phosphatidylcholine (PC)
+GSTA1	C100021103	pregnenetriol sulfate*	NAMED	Lipid	Pregnenolone Steroids
+SMPD3	C100021123	hydroxy-N6,N6,N6-trimethyllysine*	NAMED	Amino Acid	Lysine Metabolism
+SMPD3	C189	N6,N6,N6-trimethyllysine	NAMED	Amino Acid	Lysine Metabolism
+NCAN	C2050	eicosapentaenoate (EPA; 20:5n3)	NAMED	Lipid	Long Chain Polyunsaturated Fatty Acid (n3 and n6)
+NCAN	C266	cholesterol	NAMED	Lipid	Sterol
+SMPD3	C444	ornithine	NAMED	Amino Acid	Urea cycle; Arginine and Proline Metabolism
+DNAJA4	C445	orotate	NAMED	Nucleotide	Pyrimidine Metabolism, Orotate containing
+NFKBIE	C827	cytidine	NAMED	Nucleotide	Pyrimidine Metabolism, Cytidine containing
+ACP6	C999912411	X - 12411	UNNAMED		
+SULT2A1	C999912456	X - 12456	UNNAMED		
+ATXN2L	C999912714	X - 12714	UNNAMED		
+PECR	C999917654	X - 17654	UNNAMED		
+SULT2A1	C999921441	X - 21441	UNNAMED		
+ACOX1	C999924309	X - 24309	UNNAMED		
